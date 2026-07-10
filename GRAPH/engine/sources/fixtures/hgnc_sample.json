@@ -1,0 +1,252 @@
+{
+  "access_method": "GET /fetch/symbol/{symbol}, Accept: application/json",
+  "docs": [
+    {
+      "agr": "HGNC:1100",
+      "alias_name": [
+        "BRCA1/BRCA2-containing complex, subunit 1",
+        "protein phosphatase 1, regulatory subunit 53",
+        "Fanconi anemia, complementation group S"
+      ],
+      "alias_symbol": [
+        "RNF53",
+        "BRCC1",
+        "PPP1R53",
+        "FANCS"
+      ],
+      "ccds_id": [
+        "CCDS11453",
+        "CCDS11454",
+        "CCDS11455",
+        "CCDS11456",
+        "CCDS11459"
+      ],
+      "cosmic": "BRCA1",
+      "date_approved_reserved": "1991-02-20T00:00:00Z",
+      "date_modified": "2023-03-15T00:00:00Z",
+      "date_name_changed": "2019-01-22T00:00:00Z",
+      "ena": [
+        "U14680"
+      ],
+      "ensembl_gene_id": "ENSG00000012048",
+      "entrez_id": "672",
+      "gencc": "HGNC:1100",
+      "gene_group": [
+        "Ring finger proteins",
+        "FA complementation groups",
+        "Protein phosphatase 1 regulatory subunits",
+        "BRCA1 A complex",
+        "BRCA1 B complex",
+        "BRCA1 C complex"
+      ],
+      "gene_group_id": [
+        58,
+        548,
+        694,
+        1328,
+        1335,
+        1336
+      ],
+      "hgnc_id": "HGNC:1100",
+      "location": "17q21.31",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product",
+      "lsdb": [
+        "Breast Cancer|http://research.nhgri.nih.gov/bic/",
+        "Fanconi Anaemia Mutation Database|http://www2.rockefeller.edu/fanconi",
+        "BRCA1 database at LOVD-China|http://genomed.org/LOVD/BC/home.php?select_db=BRCA1",
+        "Global Variome shared LOVD|https://databases.lovd.nl/shared/genes/BRCA1",
+        "LOVD - Leiden Open Variation Database|http://proteomics.bio21.unimelb.edu.au/lovd/genes/BRCA1",
+        "LRG_292|http://ftp.ebi.ac.uk/pub/databases/lrgex/LRG_292.xml"
+      ],
+      "mane_select": [
+        "ENST00000357654.9",
+        "NM_007294.4"
+      ],
+      "mgd_id": [
+        "MGI:104537"
+      ],
+      "name": "BRCA1 DNA repair associated",
+      "omim_id": [
+        "113705"
+      ],
+      "orphanet": 119068,
+      "prev_name": [
+        "breast cancer 1, early onset",
+        "breast cancer 1"
+      ],
+      "pubmed_id": [
+        1676470,
+        25472942
+      ],
+      "refseq_accession": [
+        "NM_007294"
+      ],
+      "rgd_id": [
+        "RGD:2218"
+      ],
+      "status": "Approved",
+      "symbol": "BRCA1",
+      "ucsc_id": "uc002ict.4",
+      "uniprot_ids": [
+        "P38398"
+      ],
+      "uuid": "56f3e86a-a3bf-4b3d-b7b4-3599c5bb43c6",
+      "vega_id": "OTTHUMG00000157426"
+    },
+    {
+      "agr": "HGNC:11998",
+      "alias_name": [
+        "Li-Fraumeni syndrome"
+      ],
+      "alias_symbol": [
+        "p53",
+        "LFS1"
+      ],
+      "ccds_id": [
+        "CCDS11118",
+        "CCDS45605",
+        "CCDS45606",
+        "CCDS73963",
+        "CCDS73964",
+        "CCDS73965",
+        "CCDS73966",
+        "CCDS73967",
+        "CCDS73968",
+        "CCDS73969",
+        "CCDS73970",
+        "CCDS73971"
+      ],
+      "cosmic": "TP53",
+      "date_approved_reserved": "1986-01-01T00:00:00Z",
+      "date_modified": "2023-01-20T00:00:00Z",
+      "date_name_changed": "2008-01-16T00:00:00Z",
+      "ena": [
+        "AF307851"
+      ],
+      "ensembl_gene_id": "ENSG00000141510",
+      "entrez_id": "7157",
+      "gencc": "HGNC:11998",
+      "hgnc_id": "HGNC:11998",
+      "location": "17p13.1",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product",
+      "lsdb": [
+        "IARC TP53 Mutation Database|http://www-p53.iarc.fr/",
+        "p53 UMD TP53 mutation database|http://p53.fr/",
+        "Database of Germline p53 Mutations|http://www.lf2.cuni.cz/projects/germline_mut_p53.htm",
+        "MUTP53LOAD, Mutant p53 Loss Of Activity Database|http://www.umd.be:2072/",
+        "LRG_321|http://ftp.ebi.ac.uk/pub/databases/lrgex/LRG_321.xml"
+      ],
+      "mane_select": [
+        "ENST00000269305.9",
+        "NM_000546.6"
+      ],
+      "mgd_id": [
+        "MGI:98834"
+      ],
+      "name": "tumor protein p53",
+      "omim_id": [
+        "191170"
+      ],
+      "orphanet": 120204,
+      "pubmed_id": [
+        6396087,
+        3456488,
+        2047879
+      ],
+      "refseq_accession": [
+        "NM_000546"
+      ],
+      "rgd_id": [
+        "RGD:3889"
+      ],
+      "status": "Approved",
+      "symbol": "TP53",
+      "ucsc_id": "uc060aur.1",
+      "uniprot_ids": [
+        "P04637"
+      ],
+      "uuid": "25bf383f-9b52-4968-a117-54ae66b61614",
+      "vega_id": "OTTHUMG00000162125"
+    },
+    {
+      "agr": "HGNC:3236",
+      "alias_name": [
+        "erythroblastic leukemia viral (v-erb-b) oncogene homolog (avian)",
+        "erb-b2 receptor tyrosine kinase 1"
+      ],
+      "alias_symbol": [
+        "ERBB1",
+        "ERRP"
+      ],
+      "ccds_id": [
+        "CCDS47587",
+        "CCDS5514",
+        "CCDS5515",
+        "CCDS5516",
+        "CCDS87507",
+        "CCDS94105"
+      ],
+      "cosmic": "EGFR",
+      "date_approved_reserved": "1986-01-01T00:00:00Z",
+      "date_modified": "2023-03-15T00:00:00Z",
+      "date_name_changed": "2010-06-25T00:00:00Z",
+      "ensembl_gene_id": "ENSG00000146648",
+      "entrez_id": "1956",
+      "gencc": "HGNC:3236",
+      "gene_group": [
+        "Erb-b2 receptor tyrosine kinases"
+      ],
+      "gene_group_id": [
+        1096
+      ],
+      "hgnc_id": "HGNC:3236",
+      "iuphar": "HGNC:3236",
+      "location": "7p11.2",
+      "locus_group": "protein-coding gene",
+      "locus_type": "gene with protein product",
+      "lsdb": [
+        "LRG_304|http://ftp.ebi.ac.uk/pub/databases/lrgex/LRG_304.xml"
+      ],
+      "mane_select": [
+        "ENST00000275493.7",
+        "NM_005228.5"
+      ],
+      "mgd_id": [
+        "MGI:95294"
+      ],
+      "name": "epidermal growth factor receptor",
+      "omim_id": [
+        "131550"
+      ],
+      "orphanet": 121311,
+      "prev_name": [
+        "epidermal growth factor receptor (avian erythroblastic leukemia viral (v-erb-b) oncogene homolog)"
+      ],
+      "prev_symbol": [
+        "ERBB"
+      ],
+      "pubmed_id": [
+        1505215
+      ],
+      "refseq_accession": [
+        "NM_005228"
+      ],
+      "rgd_id": [
+        "RGD:2543"
+      ],
+      "status": "Approved",
+      "symbol": "EGFR",
+      "ucsc_id": "uc003tqk.4",
+      "uniprot_ids": [
+        "P00533"
+      ],
+      "uuid": "3eb697e2-3f5c-472a-ac5a-63ebed19d66e",
+      "vega_id": "OTTHUMG00000023661"
+    }
+  ],
+  "fetched_at": "2026-07-10T21:26:18.006881+00:00",
+  "source": "HGNC (HUGO Gene Nomenclature Committee)",
+  "source_url": "https://rest.genenames.org/"
+}
