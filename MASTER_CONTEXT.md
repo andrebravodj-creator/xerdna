@@ -6,7 +6,7 @@
 
 XERDNA's governance rests on a strict hierarchy. When documents or decisions conflict, the higher level wins:
 
-1. **VISION.md** — mission, philosophy, and principle. Wins on questions of intent, ethics, and "why."
+1. **VISION.md and BIOLOGICAL_REASONING_CONSTITUTION.md** — co-equal at this level. VISION.md — mission, philosophy, and principle. Wins on questions of intent, ethics, and "why," and holds unconditional supremacy on biosecurity and ethics (Article II Rule 6, below) over both documents together. BIOLOGICAL_REASONING_CONSTITUTION.md — the permanent constitution governing how AI is permitted to reason about biological knowledge; wins, within that specific domain, on questions of AI reasoning behavior — the more specific document governs its specific domain without diminishing VISION.md's general authority elsewhere. See BIOLOGICAL_REASONING_CONSTITUTION.md Article XIX for the full division of domain and the express ethics-supremacy exception.
 2. **MASTER_CONTEXT.md** (this document) — operating law. Wins on questions of "what is and isn't allowed," governance, and structure.
 3. **ROADMAP.md** — sequencing. Wins on questions of "what comes next" and "what depends on what."
 4. **README.md** — orientation. Never authoritative on its own; it only points to the other three.
@@ -58,7 +58,7 @@ These generalize across every future phase, independent of any specific technolo
 
 ## Article VI — Naming Conventions
 
-1. **Constitutional documents** live at the repository root, in `UPPER_SNAKE_CASE.md`: `README.md`, `MASTER_CONTEXT.md`, `VISION.md`, `ROADMAP.md`.
+1. **Constitutional documents** live at the repository root, in `UPPER_SNAKE_CASE.md`: `README.md`, `MASTER_CONTEXT.md`, `VISION.md`, `ROADMAP.md`, `BIOLOGICAL_REASONING_CONSTITUTION.md`.
 2. **Top-level repository folders** are `UPPER_CASE` nouns naming a domain of work, not an implementation detail (`GRAPH/`, `DATA/`, `KNOWLEDGE/`, `AI/`, `BACKEND/`, `FRONTEND/`, `RESEARCH/`, `DOCS/`) — see Article IX.
 3. **Phase-specific design documents** live inside the folder they belong to (e.g. `GRAPH/SCHEMA.md`) and must open with a pointer back to the constitutional article that authorizes them.
 4. **Internal entity identity** uses a namespaced identifier scheme (an `xerdna:` namespace over externally-sourced records) — the concrete instantiation of this principle is a technical design and lives in the relevant phase's design document, not here; this article only fixes the principle that identity is always namespaced and never ad hoc.
@@ -101,6 +101,7 @@ The top-level layout mirrors where each phase's work will eventually live. Folde
 
 - **README.md** — entry point: what XERDNA is, current status, where to go next. Not independently authoritative (Article I).
 - **VISION.md** — the *why*: mission, origin, scientific/AI/ethical principles, the permanent architectural rules.
+- **BIOLOGICAL_REASONING_CONSTITUTION.md** — the *how AI reasons*: co-equal with VISION.md (Article I), the permanent constitution binding every AI or reasoning component XERDNA ever builds — evidence and prediction hierarchies, causal boundaries, falsifiability, human authority, and every other Article governing biological AI reasoning specifically.
 - **ROADMAP.md** — the *what and when*: phase sequencing, each phase's objective and constraints.
 - **MASTER_CONTEXT.md** (this document) — the *operating law*: authority hierarchy, non-negotiable rules, governance, design rules, current state, repository structure.
 
@@ -110,6 +111,7 @@ The top-level layout mirrors where each phase's work will eventually live. Folde
 |---|---|---|---|
 | 1.0 | 2026-07-09 | Initial ratification of the constitutional foundation (README, MASTER_CONTEXT, VISION, ROADMAP) | Establish permanent mission, principles, and governance before any schema, ingestion, API, or backend design proceeds — architecture and implementation must trace back to a ratified constitution, not precede it. |
 | 1.1 | 2026-07-09 | Added Article XII (Phase Governance Pipeline); amended Article I Level 5 to include review/decision/audit/remediation/approval artifacts as peers of phase design documents | Formalize the ten-stage gate sequence (Constitution → Architecture → Review → Decision → Audit → Remediation → Approval → Implementation → Validation → Release) already applied in practice to Phase 1's GRAPH/ work, so it binds every future phase and every future reader — including one with no memory of the session in which this practice was first established — per Article III Rule 3. |
+| 1.2 | 2026-07-11 | Ratified BIOLOGICAL_REASONING_CONSTITUTION.md as a co-equal Level 1 constitutional document alongside VISION.md (Article I amended); moved the document to the repository root per Article VI Rule 1 (Rule 1's document list updated accordingly); added the document to Article X and to README.md's constitutional-documents table | XERDNA's AI and reasoning components (beginning with Engineering Milestone 006, the Biological Reasoning Core) require a permanent, exhaustive constitutional treatment of how AI is permitted to reason about biological knowledge — evidence and prediction hierarchies, causal and correlational boundaries, falsifiability, contradiction handling, human authority — beyond what VISION.md's foundational but necessarily general Articles IV–VIII establish. Ratified before any AI or reasoning component is built, per Scientific Constitution Before Code, so every such component is bound by it from its first line of code, never retrofitted afterward. |
 
 ## Article XII — Phase Governance Pipeline
 

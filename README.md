@@ -13,6 +13,7 @@ XERDNA is built architecture-first: **principles before architecture, architectu
 | Document | Purpose |
 |---|---|
 | [VISION.md](VISION.md) | The mission, philosophy, scientific/AI/ethical principles, and permanent architectural rules. |
+| [BIOLOGICAL_REASONING_CONSTITUTION.md](BIOLOGICAL_REASONING_CONSTITUTION.md) | Co-equal with VISION.md — the permanent constitution governing how AI is permitted to reason about biological knowledge: evidence and prediction hierarchies, causal and correlational boundaries, falsifiability, human authority, and every other Article binding future AI/reasoning components. |
 | [MASTER_CONTEXT.md](MASTER_CONTEXT.md) | The operating law — authority hierarchy, non-negotiable rules, governance and amendment process, design rules, current state. |
 | [ROADMAP.md](ROADMAP.md) | The phase structure — how the mission is sequenced, phase by phase, without a fixed calendar. |
 | README.md (this file) | Entry point only — not independently authoritative; see MASTER_CONTEXT.md Article I. |
