@@ -3,13 +3,17 @@
 -- Traces to: DOCS/PHASE_002_DESIGN.md Section 4 (Storage Structure), v1.2.
 -- Implements the 9 tables described there as literal SQLite DDL.
 --
--- Scope boundary: this file implements single-row/single-table constraints
--- only (NOT NULL, CHECK, foreign keys). Cross-table rules -- immutability
--- triggers, the promoted_from/resolved_by tier-restriction check, and the
--- "confidence forbidden if established_evidence" rule -- belong to
--- Section 5 (The Insertion Gate) and are deliberately NOT implemented here;
--- they are a future engineering milestone's scope, per Milestone 001's
--- own stated boundary.
+-- Scope boundary (Milestone 001): this file originally implemented
+-- single-row/single-table constraints only. Milestone 002 (Engineering
+-- Milestone 002 -- The Insertion Gate) adds the immutability triggers
+-- deferred at that time (Section 5.3 point 2, below). The
+-- promoted_from/resolved_by tier-restriction check (Section 5.3 point 3)
+-- and the "confidence forbidden if established_evidence" rule are
+-- implemented in GRAPH/engine/gate.py (application layer), per the
+-- design's own "the gate looks up..." phrasing for point 3 and the
+-- Confidence Model's "enforced at the storage layer... via the gate"
+-- framing being satisfiable at either layer -- the gate is the layer
+-- chosen here, consistent with every other cross-table rule in Section 5.
 --
 -- Statements are idempotent (IF NOT EXISTS) so init_db() may be called
 -- safely against an existing database.
@@ -129,3 +133,51 @@ CREATE TABLE IF NOT EXISTS xerdna_namespace_registry (
     rationale      TEXT NOT NULL,
     status         TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'deprecated'))
 );
+
+-- Section 5.3 point 2 -- immutability, storage layer, defense in depth.
+-- Once inserted, evidence_tier, schema_version, and the identifying column
+-- (xerdna_id on nodes, id on associations) may never be modified, even by a
+-- direct, ad hoc database edit that bypasses the application-layer gate
+-- (which itself exposes no update function for any of them -- point 1).
+
+CREATE TRIGGER IF NOT EXISTS trg_nodes_immutable_evidence_tier
+BEFORE UPDATE OF evidence_tier ON nodes
+WHEN OLD.evidence_tier != NEW.evidence_tier
+BEGIN
+    SELECT RAISE(ABORT, 'nodes.evidence_tier is immutable after insert');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_nodes_immutable_schema_version
+BEFORE UPDATE OF schema_version ON nodes
+WHEN OLD.schema_version != NEW.schema_version
+BEGIN
+    SELECT RAISE(ABORT, 'nodes.schema_version is immutable after insert');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_nodes_immutable_xerdna_id
+BEFORE UPDATE OF xerdna_id ON nodes
+WHEN OLD.xerdna_id != NEW.xerdna_id
+BEGIN
+    SELECT RAISE(ABORT, 'nodes.xerdna_id is immutable after insert');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_associations_immutable_evidence_tier
+BEFORE UPDATE OF evidence_tier ON associations
+WHEN OLD.evidence_tier != NEW.evidence_tier
+BEGIN
+    SELECT RAISE(ABORT, 'associations.evidence_tier is immutable after insert');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_associations_immutable_schema_version
+BEFORE UPDATE OF schema_version ON associations
+WHEN OLD.schema_version != NEW.schema_version
+BEGIN
+    SELECT RAISE(ABORT, 'associations.schema_version is immutable after insert');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_associations_immutable_id
+BEFORE UPDATE OF id ON associations
+WHEN OLD.id != NEW.id
+BEGIN
+    SELECT RAISE(ABORT, 'associations.id is immutable after insert');
+END;
