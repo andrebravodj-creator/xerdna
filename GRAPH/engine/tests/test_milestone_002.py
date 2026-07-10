@@ -953,11 +953,18 @@ class TestForeignKeysEnforcementCheck(GateTestCase):
         self.assertIn("foreign_keys", str(ctx.exception))
         self.assertIsNone(self.conn.execute("SELECT 1 FROM entity_lineage").fetchone())
 
-    def test_all_seven_public_entry_points_are_covered(self):
+    def test_all_public_entry_points_are_covered(self):
         """
         Structural guarantee that this test class doesn't silently fall out
         of sync with gate.py's public API -- every insert_*/promote_*/
-        resolve_* function must appear as a check above.
+        resolve_*/add_* function must appear as a check above.
+
+        Updated in Milestone 005: gate.add_xref() was added as an 8th
+        public entry point (not 7); its own foreign-keys-enabled check is
+        covered by GRAPH/engine/tests/test_milestone_005.py's
+        test_add_xref_requires_foreign_keys_enabled, not duplicated here.
+        This test's job is only to confirm the *set* of public entry
+        points matches what this file already accounts for.
         """
         import inspect
         public_entry_points = {
@@ -968,6 +975,7 @@ class TestForeignKeysEnforcementCheck(GateTestCase):
             "insert_node", "insert_association", "insert_hypothesis",
             "promote_prediction", "resolve_hypothesis",
             "insert_checked_absent", "insert_entity_lineage",
+            "add_xref",
         }
         self.assertEqual(public_entry_points, expected)
 

@@ -124,6 +124,59 @@ def _check_namespace_registered(conn: sqlite3.Connection, term: str, kind: str) 
         raise GateValidationError(f"{term!r} ({kind}) is registered but not active (status={status!r})")
 
 
+def add_xref(
+    conn: sqlite3.Connection,
+    *,
+    xerdna_id: str,
+    namespace: str,
+    external_id: str,
+) -> None:
+    """
+    Append one xref to an EXISTING node. Section 4.2 (node_xrefs), Entity
+    Identity section's "resolves to the existing canonical node and
+    appends the xref -- it does not create a duplicate" rule.
+
+    Milestone 005. Not itself an identity resolver -- GRAPH.engine.identity
+    decides *whether* a record should be appended to an existing node or
+    minted new; this function only performs the append, once that decision
+    has been made, and independently re-enforces the one invariant that
+    must never be violated regardless of caller: the same (namespace,
+    external_id) pair may never point at two different xerdna_ids
+    (conflation guard, defense-in-depth even if identity.py is bypassed).
+
+    Idempotent: appending an already-present exact (xerdna_id, namespace,
+    external_id) triple is a safe no-op, not an error -- required for
+    idempotent re-ingestion.
+    """
+    _require_foreign_keys_enabled(conn)
+
+    if not conn.execute("SELECT 1 FROM nodes WHERE xerdna_id = ?", (xerdna_id,)).fetchone():
+        raise GateValidationError(f"add_xref: no existing node {xerdna_id!r} to append an xref to")
+    if not namespace or not external_id:
+        raise GateValidationError("add_xref: namespace and external_id are both required")
+
+    owner_row = conn.execute(
+        "SELECT DISTINCT xerdna_id FROM node_xrefs WHERE namespace = ? AND external_id = ?",
+        (namespace, external_id),
+    ).fetchall()
+    owners = {row[0] for row in owner_row}
+    if owners and owners != {xerdna_id}:
+        raise GateValidationError(
+            f"add_xref: ({namespace!r}, {external_id!r}) already belongs to "
+            f"{sorted(owners)}, not {xerdna_id!r} -- refusing to conflate two canonical nodes"
+        )
+
+    try:
+        conn.execute(
+            "INSERT OR IGNORE INTO node_xrefs (xerdna_id, namespace, external_id) VALUES (?, ?, ?)",
+            (xerdna_id, namespace, external_id),
+        )
+        conn.commit()
+    except sqlite3.IntegrityError:
+        conn.rollback()
+        raise
+
+
 def insert_node(
     conn: sqlite3.Connection,
     *,
